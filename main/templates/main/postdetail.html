@@ -1,0 +1,7 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  {{ post.title }}
+  <p>{{ post.text|linebreaks }}</p>
+  {{ posts.date_added|date:'M d, Y H:i' }}
+{% endblock %}

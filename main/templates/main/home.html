@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  <h1>HomePage</h1>
+  {% if user.is_authenticated %}
+    Hi {{ user.username }}
+    <a href="{% url 'logout' %}">Log Out</a>
+  {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'users:signup' %}">Sign Up</a>
+    <a href="{% url 'password_reset' %}">Reset</a>
+  {% endif %}
+
+  {% for post in posts %}
+    <p><a href="{% url 'main:postdetail' post.pk %}">{{ post.title }}</a></p>
+    {{ post.date_added|date:'M d, Y H:i' }}
+    <p>{{ post.text|truncatechars:200 }}</p>
+  {% endfor %}
+
+{% endblock %}
