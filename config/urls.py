@@ -27,6 +27,7 @@ urlpatterns = [
     # Local apps
     path('', include('main.urls', namespace='main')),
     path('accounts/', include('users.urls', namespace='users')),
+    path('forum/', include('forum.urls', namespace='forum')),
 ]
 
 if settings.DEBUG:

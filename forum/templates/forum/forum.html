@@ -1,0 +1,7 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+  {% for forum in object_list %}
+    <p><a href="{% url 'forum:section' forum.pk %}">{{ forum }}</a></p>
+  {% endfor %}
+{% endblock %}

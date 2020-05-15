@@ -4,10 +4,10 @@ from django.views.generic import ListView, DetailView
 from .models import Post
 
 # Create your views here.
-class HomePageView(ListView):
+class HomePageView(ListView):   
+    model = Post
+    paginate_by = 1
     template_name = 'main/home.html'
-    queryset = Post.objects.all()
-    context_object_name = 'posts'
 
 class PostDetailView(DetailView):
     model = Post
