@@ -4,11 +4,14 @@ from django.views.generic import ListView, DetailView
 from .models import Post
 
 # Create your views here.
-class HomePageView(ListView):   
+class HomePageView(ListView):
+    """Главная страница"""   
     model = Post
-    paginate_by = 1
+    ordering = '-date_added'
+    paginate_by = 2
     template_name = 'main/home.html'
 
 class PostDetailView(DetailView):
+    """Страница новости"""
     model = Post
     template_name = 'main/postdetail.html'

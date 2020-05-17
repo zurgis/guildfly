@@ -1,7 +1,16 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-  {{ post.title }}
-  <p>{{ post.text|linebreaks }}</p>
-  {{ posts.date_added|date:'M d, Y H:i' }}
+  <fieldset class="form-group">
+    <legend class="border-bottom mb-3">{{ post.title }}</legend>
+  </fieldset>
+
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <p class="article-content">{{ post.text|linebreaks }}</p>
+        <small class="text-muted">{{ post.date_added|date:'M d, Y H:i' }}</small>
+      </div>
+    </div>
+  </article>
 {% endblock %}

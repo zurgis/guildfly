@@ -1,7 +1,17 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
+  <fieldset class="form-group">
+    <legend class="border-bottom mb-3">Форумы Guild-Fly</legend>
+  </fieldset>
+
   {% for forum in object_list %}
-    <p><a href="{% url 'forum:section' forum.pk %}">{{ forum }}</a></p>
-  {% endfor %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="article-title" href="{% url 'forum:section' forum.id %}">{{ forum }}</a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
 {% endblock %}

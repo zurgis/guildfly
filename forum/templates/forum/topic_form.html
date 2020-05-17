@@ -2,17 +2,21 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+  <fieldset class="form-group">
+    <legend class="border-bottom mb-3">{{ section }}</legend>
+  </fieldset>
+
   <div class="content-section">
     <form action="" method="POST">
       {% csrf_token %}
 
       <fieldset class="form-group">
-        <legend class="border-bottom mb-3">Восстановить пароль</legend>
-        {{ form|crispy }}
+        <legend class="border-bottom mb-4">Добавить новую тему:</legend>
+        {{ form|crispy}}
       </fieldset>
 
       <div class="form-group">
-        <button class="btn btn-light" name="submit" type="submit">Сохранить</button>
+        <button class="btn btn-light">Добавить тему</button>
       </div>
     </form>
   </div>

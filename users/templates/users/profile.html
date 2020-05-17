@@ -1,7 +1,14 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-  <img src="{{ user.profile.image.url }}" alt="">
-  {{ user.username }}
-  {{ user.email }}
+  <div class="content-section col-md-8">
+    <div class="media">
+      <img class="rounded account-img mr-3" src="{{ user.profile.image.url }}">
+
+      <div class="media-body">
+        <h2 class="account-heading">{{ user.username }}</h2>
+        <p class="text-secondary">{{ user.email }}</p>
+        <a class="nav-link" href="{% url 'users:profileupdate' %}">Изменить</a>
+      </div>
+    </div>
 {% endblock %}

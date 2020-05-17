@@ -1,21 +1,21 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-  <h1>HomePage</h1>
-  {% if user.is_authenticated %}
-    Hi {{ user.username }}
-    <a href="{% url 'logout' %}">Log Out</a>
-  {% else %}
-    <p>You are not logged in</p>
-    <a href="{% url 'login' %}">Log In</a>
-    <a href="{% url 'users:signup' %}">Sign Up</a>
-    <a href="{% url 'password_reset' %}">Reset</a>
-  {% endif %}
+  <fieldset class="form-group">
+    <legend class="border-bottom mb-3">Новости</legend>
+  </fieldset>
 
   {% for post in page_obj %}
-    <p><a href="{% url 'main:postdetail' post.pk %}">{{ post.title }}</a></p>
-    {{ post.date_added|date:'M d, Y H:i' }}
-    <p>{{ post.text|truncatechars:200 }}</p>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="article-title" href="{% url 'main:postdetail' post.pk %}">{{ post.title }}</a>
+          <small class="text-muted">{{ post.date_added|date:'M d, Y H:i' }}</small>
+        </div>
+
+        <p class="article-content">{{ post.text|truncatechars:200 }}</p>
+      </div>
+    </article>
   {% endfor %}
 
   {% if page_obj.has_previous %}
@@ -35,5 +35,4 @@
     <a class="btn btn-light" href="?page={{ page_obj.next_page_number }}">Следующая</a>
     <a class="btn btn-light" href="?page={{ page_obj.paginator.num_pages }}">Последняя</a>
   {% endif %}
-
 {% endblock %}

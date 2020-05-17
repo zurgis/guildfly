@@ -1,14 +1,24 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="content-section col-md-10">
     <form action="" method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>reg</button>
+      {% csrf_token %}
+
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-3">Регистрация</legend>
+        {{ form|crispy }}
+      </fieldset>
+
+      <div class="form-group">
+        <button class="btn btn-light">Зарегистрироваться</button>
+      </div>
     </form>
-</body>
-</html>
+
+    <div class="border-top pt-2">
+      <small class="text-muted">
+        У вас уже есть аккаунт? <a class="ml-2" href="{% url 'login' %}">Войти</a>
+      </small>
+    </div>
+{% endblock %}
